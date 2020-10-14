@@ -7,11 +7,14 @@ function addItemToList() {
 
     let li = document.createElement("li");
     let deleteButton = document.createElement("button");
+    let span = document.createElement("span");
 
     deleteButton.innerHTML = "&#10005;";
     deleteButton.classList.add("deleteButton");
 
-    li.appendChild(document.createTextNode(input.value));
+    span.innerHTML = input.value;
+
+    li.appendChild(span);
     li.appendChild(deleteButton);
     ul.appendChild(li);
 
