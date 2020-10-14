@@ -4,7 +4,7 @@ let list = document.getElementById("list");
 let ul = document.getElementById("ul");
 
 function addItemToList() {
-    
+
     let li = document.createElement("li");
     let deleteButton = document.createElement("button");
 
@@ -24,8 +24,11 @@ function addItemToList() {
     function removeListItem() {
         li.parentNode.removeChild(li);
     }
-    
+
     deleteButton.addEventListener("click", removeListItem);
+
+    clearInputValue();
+
 }
 
 function inputLength() {
@@ -35,21 +38,29 @@ function inputLength() {
 function addListItemAfterClick() {
     if (inputLength() >= 3) {
         addItemToList();
-        input.value = "";
     } else {
-        alert("List item should be at least 3 characters long.");
-        input.value = "";
+        alertMessage();
     }
 }
 
-// function addListItemAfterKeyPress(event) {
-//     if (inputLength() >= 3 && event.keyCode === 13) {
-//         addItemToList();
-//     } else {
-//         alert("List item should be at least 3 characters long.");
-//     }
-// }
+function clearInputValue() {
+    input.value = "";
+}
+
+function alertMessage() {
+    alert("List item should be at least 3 characters long.");
+}
+
+function addListItemAfterKeyPress(event) {
+    if (inputLength() >= 3 && event.keyCode === 13) {
+        addItemToList();
+        return;
+    }
+
+    if (inputLength() <= 3 && event.keyCode === 13) {
+        alertMessage();
+    }
+}
 
 addButton.addEventListener("click", addListItemAfterClick);
-
-// input.addEventListener("keypress", addListItemAfterKeyPress);
+input.addEventListener("keypress", addListItemAfterKeyPress);
