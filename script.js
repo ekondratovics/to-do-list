@@ -58,9 +58,7 @@ function addListItemAfterKeyPress(event) {
     if (inputLength() >= 3 && event.keyCode === 13) {
         addItemToList();
         return;
-    }
-
-    if (inputLength() <= 3 && event.keyCode === 13) {
+    } else if (inputLength() <= 3 && event.keyCode === 13) {
         alertMessage();
     }
 }
